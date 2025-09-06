@@ -1,5 +1,13 @@
+import type { User } from "../App";
 
-export default function UserProfile() {
+
+
+type UserProfileProps ={
+  user : User,
+  nextUser: (e:React.MouseEvent<HTMLButtonElement>)=>void
+}
+
+export default function UserProfile({user, nextUser}: UserProfileProps) {
   return (
     <form className="max-w-md mx-auto bg-white my-4 p-6 rounded-lg shadow-md">
       <h2 className="text-xl font-semibold mb-4">Edit User Profile</h2>
@@ -12,6 +20,8 @@ export default function UserProfile() {
           type="text"
           name="name"
           className="w-full p-2 border border-gray-300 rounded"
+          value={user.name}
+          onChange={()=>{}}
         />
       </div>
 
@@ -23,7 +33,8 @@ export default function UserProfile() {
           type="email"
           name="email"
           className="w-full p-2 border border-gray-300 rounded"
-
+          value={user.email}
+          onChange={()=>{}}
         />
       </div>
 
@@ -35,12 +46,13 @@ export default function UserProfile() {
           type="number"
           name="age"
           className="w-full p-2 border border-gray-300 rounded"
-
+          value={user.age}
+          onChange={()=>{}}
         />
       </div>
 
       <button
-
+        onClick={nextUser}
         className="bg-orange-500 hover:bg-orange-600 transition-colors text-white font-bold py-2 px-4 rounded"
       >
         Next User
